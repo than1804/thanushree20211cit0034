@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic HTML Tags</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        ul {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basic HTML Tags Example</h1>
+    
+    <p>This is a paragraph. It may contain <strong>bold</strong>, <em>italic</em>, and <u>underlined</u> text.</p>
+    
+    <ul>
+        <li>straberry</li>
+        <li>banana</li>
+        <li>orange</li>
+    </ul>
+    
+    <ol>
+        <li>orange</li>
+        <li>banana</li>
+        <li>starberry</li>
+    </ol>
+    
+    <table>
+        <tr>
+            <th>sno</th>
+            <th>name</th>
+            <th>class</th>
+            <th>marks</th>
+        </tr>
+        <tr>
+            <td>2021</td>
+            <td>thanu</td>
+            <td>6cit01</td>
+             <td>98</td>
+           
+        </tr>
+        <tr>
+            <td>2022</td>
+            <td>shreyas</td>
+            <td>6cit01</td>
+            <td>98</td>
+         
+        </tr>
+         <tr>
+            <td>2022</td>
+            <td>anvitha</td>
+            <td>6cit01</td>
+            <td>97</td>
+        </tr>
+        <tr>
+            <td>2025</td>
+            <td>chiranth</td>
+            <td>6cit01</td>
+            <td>78</td>
+        </tr>
+        <tr>
+            <td>2024</td>
+            <td>thanvi</td>
+            <td>6cit01</td>
+            <td>97</td>
+        </tr>
+    </table>
+    
+    <a href="www.w3c">Link to Example Website</a>
+    
+    <img src="C:\Users\Priya\Downloads\download.jpg" alt="presidency university ">
+    
+    <form action="#" method="post">
+        <label for="input-text">Input Text:</label>
+        <input type="text" id="input-text" name="input-text" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
