@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colorful Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  form {
+    background-color: #fff;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="url"],
+  input[type="date"],
+  input[type="number"],
+  input[type="range"] {
+    width: calc(100% - 12px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  input[type="range"] {
+    width: 100%;
+  }
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  .login-details {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<form id="signupForm" onsubmit="submitForm(event)">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="dob">Date of Birth:</label>
+  <input type="date" id="dob" name="dob" required>
+
+  <label for="email" id="emailLabel" style="display:none;">Email:</label>
+  <input type="email" id="email" name="email" style="display:none;">
+
+  <label for="website" id="websiteLabel" style="display:none;">Website:</label>
+  <input type="url" id="website" name="website" style="display:none;">
+
+  <button type="submit">Sign Up</button>
+</form>
+
+<div id="loginDetails" class="login-details" style="display: none;">
+  <!-- Login details will be displayed here -->
+</div>
+
+<script>
+  function submitForm(event) {
+    event.preventDefault(); // Prevent form submission
+
+    var name = document.getElementById("name").value;
+    var dob = document.getElementById("dob").value;
+    var email = document.getElementById("email").value;
+    var website = document.getElementById("website").value;
+
+    var age = calculateAge(new Date(dob));
+
+    if (age < 18) {
+      alert("Sorry, you are too young to sign up.");
+    } else {
+      displayLoginDetails(name, dob, age, email, website);
+    }
+  }
+
+  function calculateAge(birthday) { // Function to calculate age
+    var ageDifMs = Date.now() - birthday.getTime();
+    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  }
+
+  function displayLoginDetails(name, dob, age, email, website) {
+    var loginDetails = document.getElementById("loginDetails");
+    loginDetails.innerHTML = `
+      <p>Login Details:</p>
+      <ul>
+        <li>Name: ${name}</li>
+        <li>Date of Birth: ${dob}</li>
+        <li>Age: ${age}</li>
+        <li>Email: ${email}</li>
+        <li>Website: ${website}</li>
+      </ul>
+    `;
+    loginDetails.style.display = "block";
+  }
+
+  document.getElementById("dob").addEventListener("change", function() {
+    var dob = new Date(this.value);
+    var age = calculateAge(dob);
+    var emailLabel = document.getElementById("emailLabel");
+    var emailInput = document.getElementById("email");
+    var websiteLabel = document.getElementById("websiteLabel");
+    var websiteInput = document.getElementById("website");
+
+    if (age < 18) {
+      emailLabel.style.display = "none";
+      emailInput.style.display = "none";
+      websiteLabel.style.display = "none";
+      websiteInput.style.display = "none";
+    } else {
+      emailLabel.style.display = "block";
+      emailInput.style.display = "block";
+      websiteLabel.style.display = "block";
+      websiteInput.style.display = "block";
+    }
+  });
+</script>
+
+</body>
+</html>
